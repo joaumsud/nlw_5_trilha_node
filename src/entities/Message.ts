@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 import { User } from "./User";
 
 
-@Entity("messeges")
+@Entity("messages")
 class Message {
 
     @PrimaryColumn()
@@ -15,7 +15,7 @@ class Message {
     @Column()
     text: string;
 
-    @JoinColumn({ "user_id"})
+    @JoinColumn({ name: "user_id" })
     @ManyToOne(() => User)
     user: User;
 
@@ -23,9 +23,9 @@ class Message {
     user_id: string;
 
     @CreateDateColumn()
-    createed_at: Date;
+    created_at: Date;
 
-    constructo() {
+    constructor() {
         if (!this.id) {
             this.id = uuid();
         }
