@@ -18,14 +18,14 @@ class SettingsService {
             throw new Error("User already exists!");
         }
 
-        const settings = settingsRepository.create({
+        const setting = settingsRepository.create({
             chat,
             username
         });
 
-        await settingsRepository.save(settings);
+        await settingsRepository.save(setting);
 
-        return settings;
+        return setting;
     }
 }
 
