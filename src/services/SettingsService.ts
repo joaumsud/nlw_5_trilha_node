@@ -5,22 +5,28 @@ interface ISettingsCreate {
     chat: boolean;
     username: string;
 }
--
 
-    class SettingsService {
+class SettingsService {
 
-        async create({ chat, username }: ISettingsCreate) {
-            const settingsRepository = getCustomRepository(SettingsRepository);
+    async create({ chat, username }: ISettingsCreate) {
+        const settingsRepository = getCustomRepository(SettingsRepository);
 
-            const settings = settingsRepository.create({
-                chat,
-                username
-            });
-
-            await settingsRepository.save(settings);
-
-            return settings;
+        const userAlreadyExists = await settingsRepository.findOne({
+            username
+        });
+        if (userAlreadyExists) {
+            throw new Error("User already exists!");
         }
-    }
 
-export { SettingsService };
+        const settings = settingsRepository.create({
+            chat,
+            username
+        });
+
+        await settingsRepository.save(settings);
+
+        return settings;
+    }
+}
+
+export { SettingsService }
