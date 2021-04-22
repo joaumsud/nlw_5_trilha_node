@@ -1,0 +1,56 @@
+{
+  "name": "nlw_5_trilha_node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/JoauMSuD/nlw_5_trilha_node.git",
+  "author": "JoauMSuD <joaumsud@hotmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev src/server.ts",
+    "typeorm": "ts-node-dev node_modules/typeorm/cli.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "reflect-metadata": "^0.1.13",
+    "socket.io": "^4.0.1",
+    "socket.io-client": "^4.0.1",
+    "sqlite3": "^5.0.2",
+    "typeorm": "^0.2.32",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.11",
+    "@types/socket.io": "^2.1.13",
+    "@types/uuid": "^8.3.0",
+    "ts-node-dev": "^1.1.6",
+    "typescript": "^4.2.4"
+  },
+  "resolutions": {
+    "uuid": "8.3.2",
+    "chalk": "4.1.0",
+    "ansi-styles": "4.3.0",
+    "supports-color": "7.2.0",
+    "color-convert": "2.0.1",
+    "color-name": "1.1.4",
+    "has-flag": "4.0.0",
+    "cookie": "0.4.1",
+    "debug": "4.3.1",
+    "qs": "6.5.2",
+    "safe-buffer": "5.2.1",
+    "http-errors": "1.7.3",
+    "inherits": "2.0.4",
+    "ms": "2.1.1",
+    "mkdirp": "1.0.4",
+    "nopt": "4.0.3",
+    "semver": "5.7.1",
+    "tar": "4.4.13",
+    "string-width": "1.0.2",
+    "strip-ansi": "3.0.1",
+    "is-fullwidth-code-point": "1.0.0",
+    "ansi-regex": "2.1.1",
+    "extsprintf": "1.4.0",
+    "parse5": "6.0.1",
+    "strip-bom": "2.0.0"
+  }
+}
