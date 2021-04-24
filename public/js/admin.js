@@ -1,0 +1,68 @@
+const socket = io();
+let connectionsUsers = [];
+
+socket.on("admin_list_all_users", connections => {
+    connectionsUsers = connections;
+
+    document.getElementById("list_users").innerHTML = "";
+
+    let template = document.getElementById("template").innerHTML;
+
+    connections.forEach(connections => {
+        const rendered = Mustache.render(template, {
+            email: connection.user.email,
+            id: connection.socket_id,
+        })
+        document.getElementById("liste_users").innerHTML += rendered;
+
+    });
+});
+
+function call(id) {
+    const usre = connectionsUsers.find(connections => connections.socket.id === id);
+
+    const template = document.getElementById("admin_template").innerHTML;
+
+    const rendered = Mustache.render(template, {
+        email: connection.user.email,
+        id: connection.user_id
+    })
+    document.getElementById("supports").innerHTML += rendered;
+
+
+    const params = {
+        user_id: connection.user.id,
+
+    }
+    socket.emit("admin_list_messages_by_ user", params, messages => {
+        const divMessages = document.getElementById(`allMessages${connection.user_id}`);
+        messages.forEach(messages => {
+            const createDiv = document.createElement("div");
+
+            if (message.admin_id === null) {
+                createDiv.className = "admin_message_client";
+
+                createDiv.innerHTML = `<span>${connection.user.email}</span>`;
+                createDiv.innerHTML += `<span> ${messagem.text}</span>`;
+                createDiv.innerHTML += `<span class="admin_date">${dayjs(message.create_at).format("DD/MM/YYYY HH:mm:ss")}</span>`
+
+            } else {
+                createDiv.className = "admin_message_admin";
+
+                createDiv.innerHTML = `Atendente: <span>${messagem.text}</span>`;
+                createDiv.innerHTML += `<span class=""admin_date>${dayjs(message.create_at).format("DD/MM/YYYY HH:mm:ss")}</span>`
+            }
+            divMessages.appendChild(createDiv);
+        });
+    });
+}
+
+function sendMessage(id) {
+    const text = document.getElementById(`send_message_${id}`);
+
+    const params = {
+        text: text.value,
+        user_id: id,
+    }
+    socket.emit("admin_send_message", params);
+}

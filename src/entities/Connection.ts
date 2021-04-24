@@ -3,7 +3,7 @@ import { User } from "./User";
 import { v4 as uuid } from "uuid";
 
 
-@Entity("connectio")
+@Entity("connections")
 class Connection {
     @PrimaryColumn()
     id: string;
